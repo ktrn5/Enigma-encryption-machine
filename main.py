@@ -26,12 +26,12 @@ def create_parser():
 
 
 def main():
-    """ Основная функция программы. """
+    """ основная функция программы. Запуск"""
     parser = create_parser()
     namespace = parser.parse_args()
 
     # Если аргументы командной строки переданы, используем их
-    if namespace.rotors and namespace.text:
+    if (namespace.rotors and namespace.text):
         start_p = namespace.rotors
         helpers.check_initial_let(start_p)
         cipher = namespace.text
@@ -41,7 +41,9 @@ def main():
         helpers.check_initial_let(start_p)
         cipher = user_input.get_text_rus("введите текст::")
 
-    rotor1, rotor2, rotor3 = start_p[0], start_p[1], start_p[2]
+    rotor1 = start_p[0]
+    rotor2 = start_p[1]
+    rotor3 = start_p[2]
     enigma_machine = enigma.Enigma(rotor1, rotor2, rotor3)
 
     cipher_result = enigma_machine.encrypr(cipher)
