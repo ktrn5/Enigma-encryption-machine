@@ -39,7 +39,7 @@ class Rotor:
         1 ротор -- 1 строка, 2 - 2.... """
 
         self.letter = 0
-        self.previous_key = 0
+        self.previous = 0
         self.alphabet = alphabet # русский алфавит + пробел
         self.code_alphabet = helpers.readit(file_path, line_number) # читаем настройку ротора с помощью моего модуля
         self.set_letter(letter)
@@ -55,7 +55,7 @@ class Rotor:
 
         letter = letter.upper()
         letter = self.alphabet.index(letter)
-        letter += self.letter - self.previous_key
+        letter = letter + (self.letter - self.previous) #сдвиг
         letter = helpers.check_index(letter, 34) #чтобы не было ошибки out of range
         return self.code_alphabet[letter]
 
@@ -66,7 +66,7 @@ class Rotor:
 
         letter = letter.upper()
         letter = self.code_alphabet.index(letter)
-        letter -= self.letter - self.previous_key
+        letter = letter - (self.letter - self.previous) #сдвиг 
         letter = helpers.check_index(letter, 34) #чтобы не было ошибки out of range
         return self.alphabet[letter]
 
