@@ -3,6 +3,32 @@ import helpers
 file_path = 'settings.txt'
 alphabet = [' ', 'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я']
 
+class Panel:
+    """Класс панель. Реализует смену букв одну на другую из заданной настройки.
+    Если в настройках буквы нет, то оставляет ту, которая подана."""
+
+    def __init__(self, change):
+        self.change = change
+
+    def panelling(self, letter):
+        if letter in self.change:
+            return self.change[letter]
+        else:
+            return letter
+
+
+class Reflector:
+    """Класс рефлектор. Реализует смену букв одну на другую из заданной настройки.
+     Симметричная замена: обязательна четность алфавита"""
+
+    def __init__(self, reflection):
+        self.reflection = reflection
+        helpers.check_proper_len(self.reflection) #проверка на то, что должно быть 17 замен (т.е. 34 пары (А:Б, Б:А и т.д...)
+
+    def reflect(self, letter):
+        return self.reflection[letter]
+
+
 class Rotor:
     """Класс, обеспечивающий работу ротора"""
 
@@ -50,27 +76,4 @@ class Rotor:
         self.letter = self.alphabet.index(letter.upper())
 
 
-class Panel:
-    """Класс панель. Реализует смену букв одну на другую из заданной настройки.
-    Если в настройках буквы нет, то оставляет ту, которая подана."""
 
-    def __init__(self, change):
-        self.change = change
-
-    def panelling(self, letter):
-        if letter in self.change:
-            return self.change[letter]
-        else:
-            return letter
-
-
-class Reflector:
-    """Класс рефлектор. Реализует смену букв одну на другую из заданной настройки.
-     Симметричная замена: обязательна четность алфавита"""
-
-    def __init__(self, reflection):
-        self.reflection = reflection
-        helpers.check_proper_len(self.reflection) #проверка на то, что должно быть 17 замен (т.е. 34 пары (А:Б, Б:А и т.д...)
-
-    def reflect(self, letter):
-        return self.reflection[letter]
