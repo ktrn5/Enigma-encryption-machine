@@ -32,7 +32,7 @@ def check_proper_len(alphabet):
 
 
 def check_initial_let(start_p):
-    """ Проверяет, что в алфавите ровно 34 символа """
+    """ Проверяет, что задано 3 символа """
     if len(start_p) != 3:
         raise ValueError("Ошибка. Введите 3 символа.")
 
