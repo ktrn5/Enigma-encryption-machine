@@ -57,7 +57,7 @@ class Rotor:
         letter = self.alphabet.index(letter)
         letter = letter + (self.letter - self.previous) #сдвиг
         letter = helpers.check_index(letter, 34) #чтобы не было ошибки out of range
-        return self.code_alphabet[letter]
+        return self.code_alphabet[letter] #возваращем символ на этом индексе, но уже из алфавита из конфигурации
 
 
     def reverse_encrypt(self, letter):
