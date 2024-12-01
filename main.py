@@ -45,7 +45,7 @@ def main():
     enigma_machine = enigma.Enigma(rotor1, rotor2, rotor3)
 
     cipher_result = enigma_machine.encrypr(cipher)
-    print(f'результат:: {cipher_result}')
+    print(f'результат::{cipher_result}')
 
 main()
 
